@@ -16,12 +16,5 @@ class RingBuffer:
             self.isFull = len(self.storage) == self.capacity
 
     def get(self):
-        return self.storage
-
-
-test_buffer = RingBuffer(5)
-test_buffer.append(None)
-test_buffer.append(3)
-test_buffer.append(2)
-test_buffer.append(1)
-print(test_buffer.get())
+        result = filter(lambda item: item is not None, self.storage)
+        return list(result)
