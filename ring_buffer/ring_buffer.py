@@ -16,4 +16,12 @@ class RingBuffer:
             self.isFull = len(self.storage) == self.capacity
 
     def get(self):
-        pass
+        return self.storage
+
+
+test_buffer = RingBuffer(5)
+test_buffer.append(None)
+test_buffer.append(3)
+test_buffer.append(2)
+test_buffer.append(1)
+print(test_buffer.get())
