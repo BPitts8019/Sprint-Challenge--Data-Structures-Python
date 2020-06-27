@@ -13,13 +13,16 @@ f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
 
+# ==== Run Time Complexity: O(n^2) ====
 # Replace the nested for loops below with your improvements
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
+
 tree = None
 # populate BST - loop through first list
+# ==== Run Time Complexity: O(n log n) ====
 for name in names_1:
     if tree is not None:
         tree.insert(name)
@@ -27,6 +30,7 @@ for name in names_1:
         tree = BSTNode(name)
 
 # cross-reference BST - loop trough second list
+# ==== Run Time Complexity: O(n log n) ====
 for name in names_2:
     if tree.contains(name):
         duplicates.append(name)
