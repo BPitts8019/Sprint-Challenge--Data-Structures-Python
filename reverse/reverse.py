@@ -21,8 +21,8 @@ class LinkedList:
         output = "LinkedList: [ "
         cur_node = self.head
         while cur_node is not None:
-            output += f"{cur_node.value} -> "
-            cur_node = cur_node.next_node
+            output += f"{cur_node.get_value()} -> "
+            cur_node = cur_node.get_next()
 
         return output + "None ]"
 
@@ -30,8 +30,9 @@ class LinkedList:
         output = ""
         cur_node = self.head
         while cur_node is not None:
-            output += f"{cur_node.value} -> "
-            cur_node = cur_node.next_node
+            output += f"{cur_node.get_value()}"
+            output += f" -> " if cur_node.get_next() is not None else ""
+            cur_node = cur_node.get_next()
 
         return output
 
@@ -58,4 +59,21 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        if node is None:
+            return
+
+        if node.next_node:
+            self.reverse_list(node.next_node, node)
+        else:
+            self.head = node
+
+        node.next_node = prev
+
+
+some_list = LinkedList()
+some_list.add_to_head(3)
+some_list.add_to_head(2)
+some_list.add_to_head(1)
+print(some_list)
+some_list.reverse_list(some_list.head, None)
+print(some_list)
