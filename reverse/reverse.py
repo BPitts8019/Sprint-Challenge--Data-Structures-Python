@@ -12,9 +12,28 @@ class Node:
     def set_next(self, new_next):
         self.next_node = new_next
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
+
+    def __repr__(self):
+        output = "LinkedList: [ "
+        cur_node = self.head
+        while cur_node is not None:
+            output += f"{cur_node.value} -> "
+            cur_node = cur_node.next_node
+
+        return output + "None ]"
+
+    def __str__(self):
+        output = ""
+        cur_node = self.head
+        while cur_node is not None:
+            output += f"{cur_node.value} -> "
+            cur_node = cur_node.next_node
+
+        return output
 
     def add_to_head(self, value):
         node = Node(value)
